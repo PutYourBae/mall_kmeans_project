@@ -21,19 +21,40 @@ from sklearn.metrics import silhouette_score
 from sklearn.decomposition import PCA
 
 # ---------------------------
-# Config
+# Konfigurasi awal
 # ---------------------------
 DATA_PATH = "data/Mall_Customers.csv"
 OUT_DIR = "outputs"
 RANDOM_STATE = 42
-if not os.path.exists(OUT_DIR):
-    os.makedirs(OUT_DIR)
+
+# Buat folder jika belum ada
+os.makedirs("data", exist_ok=True)
+os.makedirs(OUT_DIR, exist_ok=True)
 
 # ---------------------------
-# 1. Load data
+# 1. Load Dataset
 # ---------------------------
 def load_data(path=DATA_PATH):
-    df = pd.read_csv(path)
+    """
+    Mencoba memuat dataset lokal jika sudah ada.
+    Jika belum, otomatis mengunduh dari URL GitHub mirror.
+    """
+    if os.path.exists(path):
+        print(f"✅ Dataset ditemukan secara lokal di {path}")
+        df = pd.read_csv(path)
+    else:
+        print("⚠️ Dataset lokal tidak ditemukan. Mencoba mengunduh dari URL GitHub...")
+        url = "https://raw.githubusercontent.com/Ankit152/Customer-Segmentation-Tutorial/master/Mall_Customers.csv"
+        try:
+            df = pd.read_csv(url)
+            print("✅ Dataset berhasil diunduh dari GitHub.")
+            # Simpan salinannya agar tidak perlu download lagi
+            df.to_csv(path, index=False)
+            print(f"💾 Dataset disimpan ke {path}")
+        except Exception as e:
+            print("❌ Gagal mengunduh dataset. Pastikan koneksi internet aktif.")
+            print("Error:", e)
+            raise e
     return df
 
 # ---------------------------
