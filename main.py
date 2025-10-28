@@ -12,6 +12,10 @@ Output:
 import os
 import pandas as pd
 import numpy as np
+
+# Gunakan backend non-GUI agar tidak error Tkinter
+import matplotlib
+matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import seaborn as sns
 
@@ -44,11 +48,10 @@ def load_data(path=DATA_PATH):
         df = pd.read_csv(path)
     else:
         print("⚠️ Dataset lokal tidak ditemukan. Mencoba mengunduh dari URL GitHub...")
-        url = "https://raw.githubusercontent.com/Ankit152/Customer-Segmentation-Tutorial/master/Mall_Customers.csv"
+        url = "https://raw.githubusercontent.com/arienugroho050396/Mall-Customer-Segmentation-Unsupervised-ML/main/Mall_Customers.csv"
         try:
             df = pd.read_csv(url)
             print("✅ Dataset berhasil diunduh dari GitHub.")
-            # Simpan salinannya agar tidak perlu download lagi
             df.to_csv(path, index=False)
             print(f"💾 Dataset disimpan ke {path}")
         except Exception as e:
