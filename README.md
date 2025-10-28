@@ -23,16 +23,16 @@ Tujuan akhirnya adalah mengelompokkan pelanggan ke dalam beberapa segmen dengan 
 ```bash
 mall_kmeans_project/
 ├─ data/
-│ └─ Mall_Customers.csv ← Dataset
+│ └─ Mall_Customers.csv                     ← Dataset
 ├─ outputs/
-│ ├─ elbow.png ← Grafik metode Elbow
-│ ├─ silhouette_scores.txt ← Nilai Silhouette tiap k
-│ ├─ cluster_plot.png ← Visualisasi hasil klaster
-│ ├─ customers_with_cluster.csv ← Data + label klaster
-│ └─ cluster_summary.csv ← Statistik tiap klaster
-├─ main.py ← Script utama
-├─ requirements.txt ← Library yang dibutuhkan
-└─ README.md ← Dokumentasi proyek
+│ ├─ elbow.png                              ← Grafik metode Elbow
+│ ├─ silhouette_scores.txt                  ← Nilai Silhouette tiap k
+│ ├─ cluster_plot.png                       ← Visualisasi hasil klaster
+│ ├─ customers_with_cluster.csv             ← Data + label klaster
+│ └─ cluster_summary.csv                    ← Statistik tiap klaster
+├─ main.py                                  ← Script utama
+├─ requirements.txt                         ← Library yang dibutuhkan
+└─ README.md                                ← Dokumentasi proyek
 ```
 ---
 
